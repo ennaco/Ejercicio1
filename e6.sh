@@ -4,20 +4,16 @@ read -p "Dime los litros de agua consumidos: " litros
 
 
 if [ $litros -le 50 ]; then
-	precio=20,00
+	precio=20
 
-fi
-if [ $litros -gt 50 ] && [ $litros -le 250 ]; then
-	litros=$((litros-50))
-	precio=$((precio+20,00))
-	echo $litros
-	precio=$((precio+litros*0,20)) 
+elif [ $litros -gt 50 ] || [ $litros -le 200 ]; then
+	precio=20
+	precio=$((precio+(litros-50)/5)) 
 else
-	litros=$((litros-50))
-	precio=$((precio+20,00))
-	precio=$((precio+litros*0,20))
+	precio=50
 	litros=$((litros-200))
-	precio=$((litros*0,10))
+	precio=$((litros/10))
 fi
+
 
 echo $precio
